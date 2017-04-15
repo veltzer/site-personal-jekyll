@@ -23,6 +23,7 @@ baseurl: "blog-jekyll" # the subpath of your site, e.g. /blog
 url: "https://veltzer.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: veltzer
 github_username: veltzer
+facebook_username: veltzer
 
 # Build settings
 markdown: kramdown
