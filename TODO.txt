@@ -1,0 +1,2 @@
+- prevent regeneration of the output every time. especially the docs/feed.xml
+	which always changes.
