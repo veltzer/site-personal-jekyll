@@ -22,6 +22,7 @@ url: "https://veltzer.github.io" # the base hostname & protocol for your site, e
 twitter_username: veltzer
 github_username: veltzer
 facebook_username: veltzer
+destination: docs
 
 # Build settings
 markdown: kramdown
