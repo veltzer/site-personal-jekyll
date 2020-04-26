@@ -1,2 +1,2 @@
 #!/bin/sh
-firefox http://localhost:8000/ &
+xdg-open http://localhost:4000
