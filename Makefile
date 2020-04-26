@@ -1,7 +1,7 @@
 SOURCE_FOLDER:=blog
 DESTINATION_FOLDER:=docs
 SOURCES:=$(shell find $(SOURCE_FOLDER) -type f)
-STAMP_FILE:=out/$(DESTINATION_FOLDER).stamp
+STAMP_FILE:=build.stamp
 
 .PHONY: all
 all: $(STAMP_FILE)
