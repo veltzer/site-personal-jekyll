@@ -13,3 +13,7 @@ $(STAMP_FILE): $(SOURCES) Makefile
 .PHONY: clean
 clean:
 	rm -rf $(STAMP_FILE) $(DESTINATION_FOLDER)
+
+.PHONY: new
+new:
+	jekyll new blog
