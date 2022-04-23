@@ -5,6 +5,7 @@ STAMP_FILE:=build.stamp
 
 .PHONY: all
 all: $(STAMP_FILE)
+	@true
 
 $(STAMP_FILE): $(SOURCES) Makefile
 	@jekyll build --source $(SOURCE_FOLDER) --destination $(DESTINATION_FOLDER)
