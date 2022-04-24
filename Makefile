@@ -1,7 +1,10 @@
 ##############
 # parameters #
 ##############
+# do you want to do tools?
 DO_TOOLS:=1
+# do you want dependency on the Makefile itself ?
+DO_ALLDEP:=1
 
 ########
 # code #
@@ -11,6 +14,15 @@ DESTINATION_FOLDER:=docs
 SOURCES:=$(shell find $(SOURCE_FOLDER) -type f)
 STAMP_FILE:=build.stamp
 TOOLS=tools.stamp
+
+# silent stuff
+ifeq ($(DO_MKDBG),1)
+Q:=
+# we are not silent in this branch
+else # DO_MKDBG
+Q:=@
+#.SILENT:
+endif # DO_MKDBG
 
 ifeq ($(DO_TOOLS),1)
 .EXTRA_PREREQS+=$(TOOLS)
@@ -24,16 +36,26 @@ all: $(STAMP_FILE)
 	@true
 
 $(TOOLS):
-	@gem install jekyll
+	$(info doing $@)
+	$(Q)gem install jekyll
+	$(Q)touch $@
 
 $(STAMP_FILE): $(SOURCES) Makefile
-	@jekyll build --source $(SOURCE_FOLDER) --destination $(DESTINATION_FOLDER)
-	@touch $(STAMP_FILE)
+	$(info doing $@)
+	$(Q)jekyll build --source $(SOURCE_FOLDER) --destination $(DESTINATION_FOLDER)
+	$(Q)touch $(STAMP_FILE)
 
 .PHONY: clean
 clean:
-	rm -rf $(STAMP_FILE) $(DESTINATION_FOLDER)
+	$(info doing $@)
+	$(Q)rm -rf $(TOOLS) $(STAMP_FILE) $(DESTINATION_FOLDER)
+
+.PHONY: clean_hard
+clean_hard:
+	$(info doing $@)
+	$(Q)git clean -qffxd
 
 .PHONY: new
 new:
-	jekyll new blog
+	$(info doing $@)
+	$(Q)jekyll new blog
