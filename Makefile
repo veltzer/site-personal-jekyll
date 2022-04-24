@@ -37,8 +37,9 @@ all: $(TOOLS) $(STAMP_FILE)
 
 $(TOOLS):
 	$(info doing $@)
-	$(Q)gem install jekyll
+	$(Q)bundle install --local
 	$(Q)touch $@
+# $(Q)gem install jekyll
 
 $(STAMP_FILE): $(SOURCES) Makefile
 	$(info doing $@)

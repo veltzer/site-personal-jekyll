@@ -2,3 +2,5 @@
 /out
 /*.stamp
 /.venv/
+/_site
+/.jekyll-cache
