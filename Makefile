@@ -26,13 +26,13 @@ endif # DO_MKDBG
 
 ifeq ($(DO_TOOLS),1)
 .EXTRA_PREREQS+=$(TOOLS)
-endif
+endif # DO_TOOLS
 
 #########
 # rules #
 #########
 .PHONY: all
-all: $(STAMP_FILE)
+all: $(TOOLS) $(STAMP_FILE)
 	@true
 
 $(TOOLS):
