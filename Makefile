@@ -37,6 +37,7 @@ all: $(TOOLS) $(STAMP_FILE)
 
 $(TOOLS):
 	$(info doing $@)
+	$(Q)xargs -a packages.txt sudo apt-get install
 	$(Q)bundle install --local
 	$(Q)touch $@
 # $(Q)gem install jekyll
