@@ -37,7 +37,7 @@ all: $(TOOLS) $(STAMP_FILE)
 
 $(TOOLS): packages.txt config/deps.py
 	$(info doing $@)
-	$(Q)xargs -a packages.txt sudo apt-get install
+	$(Q)xargs -a packages.txt sudo apt-get -y install
 	$(Q)bundle install --local
 	$(Q)touch $@
 # $(Q)gem install jekyll
