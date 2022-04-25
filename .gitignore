@@ -1,6 +1,6 @@
 /.sass-cache/
 /out
-/*.stamp
+*.stamp
 /.venv/
 /_site
 /.jekyll-cache
