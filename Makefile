@@ -45,6 +45,7 @@ $(TOOLS): packages.txt config/deps.py
 $(STAMP_FILE): $(SOURCES) Makefile
 	$(info doing $@)
 	$(Q)jekyll build --source $(SOURCE_FOLDER) --destination $(DESTINATION_FOLDER)
+	$(Q)rm -f docs/feed.xml
 	$(Q)touch $(STAMP_FILE)
 
 .PHONY: clean

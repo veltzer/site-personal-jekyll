@@ -11,6 +11,6 @@ gem "minima", :github => 'jekyll/minima' # not specifying a commit, I just want 
 
 group :jekyll_plugins do
   gem 'jekyll-sitemap'
-#  gem 'jekyll-feed'
+  gem 'jekyll-feed'
   gem 'jekyll-seo-tag'
 end
