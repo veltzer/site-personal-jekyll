@@ -36,10 +36,10 @@ all: $(TOOLS) $(STAMP_FILE)
 	@true
 
 $(TOOLS): packages.txt config/deps.py
-	$(info doing $@)
+	$(info doing [$@])
 	$(Q)xargs -a packages.txt sudo apt-get -y install
 	$(Q)bundle install --local
-	$(Q)touch $@
+	$(Q)pymakehelper touch_mkdir $@
 # $(Q)gem install jekyll
 
 $(STAMP_FILE): $(SOURCES) Makefile
