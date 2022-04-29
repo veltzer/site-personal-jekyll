@@ -12,4 +12,4 @@ jobs:
     - name: Install python dependencies
       run: pip install -r requirements.txt
     - name: build
-      run: make
+      run: pymakehelper run_make
