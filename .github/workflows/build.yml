@@ -1,15 +1,15 @@
-name: make
-on: [push, pull_request]
+name: build
+on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3    
+    - uses: actions/checkout@v3
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
     - name: Install python dependencies
       run: pip install -r requirements.txt
-    - name: build
+    - name: make
       run: pymakehelper run_make
