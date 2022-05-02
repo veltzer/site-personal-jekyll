@@ -40,7 +40,7 @@ $(STAMP_FILE): $(SOURCES) Makefile
 .PHONY: clean
 clean:
 	$(info doing $@)
-	$(Q)rm -rf $(TOOLS) $(STAMP_FILE) $(DESTINATION_FOLDER)
+	$(Q)rm -rf $(STAMP_FILE) $(DESTINATION_FOLDER)
 
 .PHONY: clean_hard
 clean_hard:
