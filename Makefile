@@ -1,19 +1,19 @@
 ##############
 # parameters #
 ##############
-# do you want to do tools?
-DO_TOOLS:=1
 # do you want dependency on the Makefile itself ?
 DO_ALLDEP:=1
 
 ########
 # code #
 ########
+ALL:=
 SOURCE_FOLDER:=blog
 DESTINATION_FOLDER:=docs
 SOURCES:=$(shell find $(SOURCE_FOLDER) -type f)
 STAMP_FILE:=build.stamp
-TOOLS=tools.stamp
+
+ALL+=$(STAMP_FILE)
 
 # silent stuff
 ifeq ($(DO_MKDBG),1)
@@ -24,23 +24,12 @@ Q:=@
 #.SILENT:
 endif # DO_MKDBG
 
-ifeq ($(DO_TOOLS),1)
-.EXTRA_PREREQS+=$(TOOLS)
-endif # DO_TOOLS
-
 #########
 # rules #
 #########
 .PHONY: all
-all: $(TOOLS) $(STAMP_FILE)
+all: $(ALL)
 	@true
-
-$(TOOLS): packages.txt config/deps.py
-	$(info doing [$@])
-	$(Q)xargs -a packages.txt sudo apt-get -y install
-	$(Q)bundle install --local
-	$(Q)pymakehelper touch_mkdir $@
-# $(Q)gem install jekyll
 
 $(STAMP_FILE): $(SOURCES) Makefile
 	$(info doing $@)
