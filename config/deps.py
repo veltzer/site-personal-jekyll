@@ -1,3 +1,4 @@
 packages=[
-    "pymakehelper",
+    "ruby-bundler",
+    "rbenv",
 ]
