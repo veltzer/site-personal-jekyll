@@ -6,3 +6,4 @@
 /.jekyll-cache
 /docs/feed.xml
 __pycache__
+/.pydmt/
