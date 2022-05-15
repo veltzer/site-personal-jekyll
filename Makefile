@@ -3,6 +3,8 @@
 ##############
 # do you want dependency on the Makefile itself ?
 DO_ALLDEP:=1
+# run jekyll?
+DO_JEKYLL:=0
 
 ########
 # code #
@@ -13,7 +15,9 @@ DESTINATION_FOLDER:=docs
 SOURCES:=$(shell find $(SOURCE_FOLDER) -type f)
 STAMP_FILE:=build.stamp
 
+ifeq ($(DO_JEKYLL),1)
 ALL+=$(STAMP_FILE)
+endif # DO_JEKYLL
 
 # silent stuff
 ifeq ($(DO_MKDBG),1)
