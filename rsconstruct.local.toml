@@ -1,0 +1,9 @@
+# Repo-specific overlay. Deep-merged over the canonical rsconstruct.toml.
+
+# blog/ holds Jekyll SOURCES: files that open with YAML front matter and body
+# fragments Jekyll wraps in a layout at build time. They are not standalone
+# documents, so tidy's missing-doctype/implicit-body warnings are category
+# errors on them. The built site (docs/) is generated output and outside the
+# scanned dirs anyway.
+[processor.tidy]
+src_exclude_paths = ["blog/404.html"]
