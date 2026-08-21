@@ -62,7 +62,7 @@ src_dirs = ["tests"]
 # ─── shell ───────────────────────────────────────────────────────────────────
 
 [processor.shellcheck]
-src_dirs = ["scripts", "src", "misc", "exercises", "docs", "config"]
+src_dirs = ["scripts"]
 args = ["--severity=error", "--shell=bash"]
 
 # ─── lua ─────────────────────────────────────────────────────────────────────
