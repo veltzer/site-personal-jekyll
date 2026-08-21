@@ -7,3 +7,17 @@
 # scanned dirs anyway.
 [processor.tidy]
 src_exclude_paths = ["blog/404.html"]
+
+# Site build, formerly the Makefile's jekyll rule: render blog/ into the
+# committed docs/ folder that GitHub Pages serves, then drop the unpublished
+# feed.xml. The native jekyll processor can't express this (it hardcodes
+# _site/ next to _config.yml and can't run the feed removal), so the build
+# lives in scripts/build_docs.sh behind the explicit processor. `bundle` is
+# declared so `rsconstruct tools install` provides bundler; the gems
+# themselves come from `bundle install` against the root Gemfile.lock.
+[processor.explicit.build_docs]
+command = "scripts/build_docs.sh"
+required_tools = ["bundle"]
+inputs = ["scripts/build_docs.sh", "Gemfile", "Gemfile.lock"]
+input_globs = ["blog/**"]
+output_dirs = ["docs"]
