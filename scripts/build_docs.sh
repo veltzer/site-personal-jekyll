@@ -10,6 +10,11 @@
 # processor) are informational only and ignored.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+# The apt ruby's system gem dir (/var/lib/gems) is not writable by the CI
+# runner user, so point gem/bundler at a per-user GEM_HOME. Respect an
+# existing GEM_HOME so a local setup keeps its own location.
+export GEM_HOME="${GEM_HOME:-$HOME/.gem}"
+export PATH="$GEM_HOME/bin:$PATH"
 # Install the Gemfile.lock gems before building. This runs here rather than
 # as a CI workflow step so the workflow installs nothing on its own —
 # everything flows through rsconstruct (`tools install` provides bundler,
