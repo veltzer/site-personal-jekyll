@@ -39,13 +39,6 @@ jobs:
       run: |
         rsconstruct tools install-deps
         rsconstruct tools install
-    - name: install gems
-      # The site build (explicit.build_docs) runs jekyll under bundler, so
-      # the gems from Gemfile.lock must be installed. Ruby comes with the
-      # ubuntu-24.04 runner image; bundler is installed into GEM_HOME by
-      # `rsconstruct tools install` (required_tools = ["bundle"]), and the
-      # Gemfile.lock gems land in the same GEM_HOME.
-      run: bundle install
     - name: build
       run: rsconstruct build
     - name: status

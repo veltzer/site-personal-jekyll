@@ -14,7 +14,8 @@ src_exclude_paths = ["blog/404.html"]
 # _site/ next to _config.yml and can't run the feed removal), so the build
 # lives in scripts/build_docs.sh behind the explicit processor. `bundle` is
 # declared so `rsconstruct tools install` provides bundler; the gems
-# themselves come from `bundle install` against the root Gemfile.lock.
+# themselves come from the `bundle install` the script runs against the
+# root Gemfile.lock before building.
 [processor.explicit.build_docs]
 command = "scripts/build_docs.sh"
 required_tools = ["bundle"]

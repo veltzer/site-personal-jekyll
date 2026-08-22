@@ -10,5 +10,10 @@
 # processor) are informational only and ignored.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+# Install the Gemfile.lock gems before building. This runs here rather than
+# as a CI workflow step so the workflow installs nothing on its own —
+# everything flows through rsconstruct (`tools install` provides bundler,
+# the build provides the gems).
+bundle install
 bundle exec jekyll build --source blog --destination docs
 rm -f docs/feed.xml
