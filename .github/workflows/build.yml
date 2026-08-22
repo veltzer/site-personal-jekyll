@@ -20,6 +20,14 @@ jobs:
         key: rsconstruct-${{ runner.os }}-${{ github.run_id }}
         restore-keys: |
           rsconstruct-${{ runner.os }}-
+    - name: configure gem environment
+      # The runner's ruby comes from apt, so `gem install` targets
+      # /var/lib/gems, which the runner user cannot write. Point gem and
+      # bundler at a user-writable GEM_HOME instead, and put its bin dir on
+      # PATH so the installed `bundle` executable resolves in later steps.
+      run: |
+        echo "GEM_HOME=$HOME/.gem" >> "$GITHUB_ENV"
+        echo "$HOME/.gem/bin" >> "$GITHUB_PATH"
     - name: install rsconstruct
       run: |
         gh release download --repo veltzer/rsconstruct --pattern 'rsconstruct-linux-x86_64' --output /usr/local/bin/rsconstruct
@@ -33,8 +41,10 @@ jobs:
         rsconstruct tools install
     - name: install gems
       # The site build (explicit.build_docs) runs jekyll under bundler, so
-      # the gems from Gemfile.lock must be installed. Ruby and bundler are
-      # preinstalled on the ubuntu-24.04 runner image.
+      # the gems from Gemfile.lock must be installed. Ruby comes with the
+      # ubuntu-24.04 runner image; bundler is installed into GEM_HOME by
+      # `rsconstruct tools install` (required_tools = ["bundle"]), and the
+      # Gemfile.lock gems land in the same GEM_HOME.
       run: bundle install
     - name: build
       run: rsconstruct build
