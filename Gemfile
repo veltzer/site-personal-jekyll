@@ -34,4 +34,10 @@ gem "wdm", "~> 0.1.1", :platforms => [:mingw, :x64_mingw, :mswin]
 # Lock `http_parser.rb` gem to `v0.6.x` on JRuby builds since newer versions of the gem
 # do not have a Java counterpart.
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
-gem "rb-fsevent"
+
+# listen 3.10.0 was published with broken rubygems metadata: the .gem's own
+# gemspec requires rb-fsevent, but the index (compact and full alike) does
+# not list that dependency, so a cold `bundle install` aborts with
+# "revealed dependencies not in the API or the lockfile". Hold listen at
+# the 3.9 line until a release with consistent metadata appears.
+gem "listen", "~> 3.9.0"
